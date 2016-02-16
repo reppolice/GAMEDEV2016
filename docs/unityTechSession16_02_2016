@@ -1,0 +1,41 @@
+Unity "Advanced" tech class: 
+
+- DOTween Asset: Asset in which you can manipulate objects and transforming them in space, while leaving room for the designer to tweak how the movements are performed (animations curves). SetEase(AnimationsCurve animCurve). Link: https://www.assetstore.unity3d.com/en/#!/content/27676. 
+
+- [SerializebleField]: Makes a variable private, but still editable in inspector.
+
+- How to use interfaces: MyScript : Monobehaviour, iClickHandler {}
+
+- VS2015: ctrl + r + r changes all occurences of that string
+
+- Code practice: do underscore for private variables 
+
+- requireComponent[component] http://docs.unity3d.com/ScriptReference/RequireComponent.html
+
+- mathf.perlinNoise(): Useful for adding noise
+
+- renderTexture: useful for not rendering to a viewport, but a camera.  
+
+- gyroscope: remember to gyroscope.enabled = true and also that each different smartphone provider has different values 
+
+- editor tools: 
+	- Clickable editor : Editor {
+		ovverride inspectorUI: 
+			EditorGUILayour: SomeFunction()
+			DrawDefaultInspector() 
+			labels + fields 
+	}
+
+	- Also, the "ghetto way", using [Header] or [Field]
+
+- [ContextMenu(function)]: useful for triggering a function from the inspector (from the wheel, top right corner of component)
+
+- Delegates: 
+	- eventHappened() + onDisable() 
+	- cheap way of influencing multiple objects by adding a function to them as a property. 
+
+STILL MISSING: 
+- UI 
+- RayCasting
+- Physics stuff
+  
