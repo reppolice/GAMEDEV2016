@@ -9,7 +9,7 @@ public class CameraController2 : MonoBehaviour {
     public float xTilt = 10;
 
     Vector3 destination = Vector3.zero;
-    RollScript2 charController;
+    CharacterController1 charController;
     float rotateVel = 0.0f; 
 
     void Start()
@@ -21,9 +21,9 @@ public class CameraController2 : MonoBehaviour {
     {
         if (target != null)
         {
-            if (target.GetComponent<RollScript2>())
+            if (target.GetComponent<CharacterController1>())
             {
-                charController = target.GetComponent<RollScript2>(); 
+                charController = target.GetComponent<CharacterController1>(); 
             }
             else
                 Debug.Log("Target needs a character Controller.");
