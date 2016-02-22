@@ -6,15 +6,18 @@ public class RopeScript : MonoBehaviour {
     public Transform startPos;
     public Transform endPos;
 
-    Transform firstRopeJoint;   
+    Transform firstRopeJoint;
+    Transform lastRopeJoint;    
 
     void Start()
     {
-
+        firstRopeJoint = GameObject.Find("joint1").transform;
+        lastRopeJoint = GameObject.Find("joint31").transform; 
     }
 
     void Update()
     {
-        transform.position = new Vector3(0, 10, 0);
+        firstRopeJoint.position = startPos.position;
+        lastRopeJoint.position = endPos.position;
     }
 }
