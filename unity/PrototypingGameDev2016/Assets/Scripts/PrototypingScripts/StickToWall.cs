@@ -13,7 +13,7 @@ public class StickToWall : MonoBehaviour {
 
     void Update()
     {
-        if (gameObject.GetComponent<FixedJoint>() && !Input.GetKey(KeyCode.V))
+        if (gameObject.GetComponent<FixedJoint>() && !Input.GetButton("StickToWall"))
         {
             Destroy(gameObject.GetComponent<FixedJoint>());
         }

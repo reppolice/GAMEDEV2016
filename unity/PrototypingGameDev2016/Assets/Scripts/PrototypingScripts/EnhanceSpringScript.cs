@@ -16,7 +16,7 @@ public class EnhanceSpringScript : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || Input.GetButton("EnhanceRubberBand"))
         {
             springJoint.spring = springEffect;
         } else

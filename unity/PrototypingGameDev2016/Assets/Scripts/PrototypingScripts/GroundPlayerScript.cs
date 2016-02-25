@@ -13,7 +13,7 @@ public class GroundPlayerScript : MonoBehaviour {
 
 	void Update () {
         // TODO: reset velocity
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.F) || Input.GetButton("GroundBall"))
         {
             gameObject.GetComponent<Rigidbody>().mass = massWhenGrounded;
             //rb.velocity = Vector3.zero;
