@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e38be51c958f6684186d97f1eb00b5ed
-timeCreated: 1456148558
+guid: c9b95dd62c80cf246830a9c196ab1676
+timeCreated: 1456403830
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -8,74 +8,32 @@ ModelImporter:
     100000: joint1
     100002: joint10
     100004: joint11
-    100006: joint12
-    100008: joint13
-    100010: joint14
-    100012: joint15
-    100014: joint16
-    100016: joint17
-    100018: joint18
-    100020: joint19
-    100022: joint2
-    100024: joint20
-    100026: joint21
-    100028: joint22
-    100030: joint23
-    100032: joint24
-    100034: joint25
-    100036: joint26
-    100038: joint27
-    100040: joint28
-    100042: joint29
-    100044: joint3
-    100046: joint30
-    100048: joint31
-    100050: joint4
-    100052: joint5
-    100054: joint6
-    100056: joint7
-    100058: joint8
-    100060: joint9
-    100062: //RootNode
-    100064: RopeJoints
-    100066: RopeModel
+    100006: joint2
+    100008: joint3
+    100010: joint4
+    100012: joint5
+    100014: joint6
+    100016: joint7
+    100018: joint8
+    100020: joint9
+    100022: Rope
+    100024: //RootNode
     400000: joint1
     400002: joint10
     400004: joint11
-    400006: joint12
-    400008: joint13
-    400010: joint14
-    400012: joint15
-    400014: joint16
-    400016: joint17
-    400018: joint18
-    400020: joint19
-    400022: joint2
-    400024: joint20
-    400026: joint21
-    400028: joint22
-    400030: joint23
-    400032: joint24
-    400034: joint25
-    400036: joint26
-    400038: joint27
-    400040: joint28
-    400042: joint29
-    400044: joint3
-    400046: joint30
-    400048: joint31
-    400050: joint4
-    400052: joint5
-    400054: joint6
-    400056: joint7
-    400058: joint8
-    400060: joint9
-    400062: //RootNode
-    400064: RopeJoints
-    400066: RopeModel
-    4300000: RopeModel
+    400006: joint2
+    400008: joint3
+    400010: joint4
+    400012: joint5
+    400014: joint6
+    400016: joint7
+    400018: joint8
+    400020: joint9
+    400022: Rope
+    400024: //RootNode
+    4300000: Rope
     9500000: //RootNode
-    13700000: RopeModel
+    13700000: Rope
   materials:
     importMaterials: 1
     materialName: 0
