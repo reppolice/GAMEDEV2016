@@ -13,7 +13,7 @@ public class StickToWall : MonoBehaviour {
 
     void Update()
     {
-        if (gameObject.GetComponent<FixedJoint>() && !Input.GetButton("StickToWall"))
+        if (gameObject.GetComponent<FixedJoint>() && !Input.GetButton("StickToWall") && gameObject.GetComponent<FixedJoint>() && !Input.GetKey(KeyCode.V))
         {
             Destroy(gameObject.GetComponent<FixedJoint>());
         }
@@ -23,6 +23,7 @@ public class StickToWall : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.V))
         {
+            Debug.Log("Adding joint");
             FixedJoint joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = collision.rigidbody;
         } else if(gameObject.GetComponent<FixedJoint>())
