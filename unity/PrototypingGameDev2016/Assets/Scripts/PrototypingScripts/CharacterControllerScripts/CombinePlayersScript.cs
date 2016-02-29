@@ -1,23 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CombinePlayers : MonoBehaviour {
-    public GameObject bigBall;
+public class CombinePlayersScript : MonoBehaviour {
     public GameObject smallBall;
-    public double spirngEffect; 
-
-    SpringJoint springJoint; 
-
-    void Start()
-    {
-        springJoint = bigBall.GetComponent<SpringJoint>(); 
-    }
+    bool isCarrying = false; 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Q) && !isCarrying)
         {
-            Debug.Log("hello");
+            CombineBalls();
+        } else if(Input.GetKeyDown(KeyCode.Q) && isCarrying)
+        {
+            DetachBalls();
         }
+
+        if (isCarrying)
+        {
+            CombineBalls();
+        }
+    }
+
+    void CombineBalls()
+    {
+        Vector3 offset = new Vector3(0.0f, 1.5f, 0.0f);
+        smallBall.GetComponent<Rigidbody>().isKinematic = true;
+        smallBall.transform.position = transform.position + offset;
+        isCarrying = true; 
+    }
+    
+    void DetachBalls()
+    {
+        isCarrying = false;
+        smallBall.GetComponent<Rigidbody>().isKinematic = false;
     }
 }
