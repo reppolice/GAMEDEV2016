@@ -73,6 +73,12 @@ public class ThirdPersonController : MonoBehaviour {
         
         if (Mathf.Abs(forwardInput) > inputSetting.inputDelay)
         {
+            if (inputSetting.FORWARD_AXIS == "RightPadVertical")
+            {
+                Debug.Log("Normalizing");
+                forwardInput *= -1;
+            }
+                
             velocity.z = moveSetting.forwardVelocity * forwardInput;
         }
         else
