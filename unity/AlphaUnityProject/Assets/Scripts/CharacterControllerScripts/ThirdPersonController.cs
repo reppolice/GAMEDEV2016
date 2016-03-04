@@ -10,6 +10,7 @@ public class ThirdPersonController : MonoBehaviour {
         public float turnVelocity = 100.0f;
         public float jumpVelocity = 25.0f;
         public float distToGround = 1.0f; // threshold for setting boolean grounded
+        public float maxDistBetweenPlayers = 20.0f; 
         public LayerMask ground;
     }
 
@@ -32,10 +33,12 @@ public class ThirdPersonController : MonoBehaviour {
     public PhysSettings PhysSetting = new PhysSettings();
     public InputSettings inputSetting = new InputSettings();
 
-    Vector3 velocity = Vector3.zero;
-    Quaternion targetRotation;
-    Rigidbody rb;
-    float forwardInput, turnInput, jumpInput;
+    private GameObject playerOne;
+    private GameObject playerTwo; 
+    private Vector3 velocity = Vector3.zero;
+    private Quaternion targetRotation;
+    private Rigidbody rb;
+    private float forwardInput, turnInput, jumpInput;
 
     public Quaternion TargetRotation
     {
@@ -44,6 +47,9 @@ public class ThirdPersonController : MonoBehaviour {
 
     void Start()
     {
+        playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
+        playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo");
+
         targetRotation = transform.rotation;
         if (GetComponent<Rigidbody>())
             rb = GetComponent<Rigidbody>();
@@ -66,6 +72,7 @@ public class ThirdPersonController : MonoBehaviour {
     {
         Run();
         rb.velocity = transform.TransformDirection(velocity);
+        MeasureDistanceLimits(); 
     }
 
     void Run()
@@ -73,25 +80,43 @@ public class ThirdPersonController : MonoBehaviour {
         
         if (Mathf.Abs(forwardInput) > inputSetting.inputDelay)
         {
+            // Inverting
             if (inputSetting.FORWARD_AXIS == "RightPadVertical")
             {
-                Debug.Log("Normalizing");
                 forwardInput *= -1;
             }
                 
             velocity.z = moveSetting.forwardVelocity * forwardInput;
         }
         else
-            velocity.z = 0;
+            velocity.z = 0.0f;
     }
 
     void Turn()
     {
         if (Mathf.Abs(turnInput) > inputSetting.inputDelay)
         {
-            targetRotation *= Quaternion.AngleAxis(moveSetting.turnVelocity * turnInput * Time.deltaTime, Vector3.up);
+            //targetRotation *= Quaternion.AngleAxis(moveSetting.turnVelocity * turnInput * Time.deltaTime, Vector3.up);
+            velocity.x = moveSetting.forwardVelocity * turnInput;
+
         }
+        else
+            velocity.x = 0.0f; 
         transform.rotation = targetRotation;
+    }
+
+    void MeasureDistanceLimits()
+    {
+        Vector3 distanceBetweenPlayers = playerOne.transform.position - playerTwo.transform.position;
+        float magnitude = distanceBetweenPlayers.magnitude;
+        Debug.Log(magnitude);
+
+        if(magnitude > moveSetting.maxDistBetweenPlayers)
+        {
+            Debug.Log("REACHED THRESHOLD");
+            rb.velocity = Vector3.zero; 
+        }
+
     }
 
 }
