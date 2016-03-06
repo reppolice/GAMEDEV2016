@@ -38,7 +38,7 @@ public class ThirdPersonController : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
     private Quaternion targetRotation;
     private Rigidbody rb;
-    private float forwardInput, turnInput, jumpInput;
+    private float forwardInput, turnInput;
 
     public Quaternion TargetRotation
     {
@@ -59,7 +59,6 @@ public class ThirdPersonController : MonoBehaviour {
     {
         forwardInput = Input.GetAxis(inputSetting.FORWARD_AXIS);
         turnInput = Input.GetAxis(inputSetting.TURN_AXIS);
-        jumpInput = Input.GetAxisRaw(inputSetting.JUMP_AXIS);
     }
 
     void Update()

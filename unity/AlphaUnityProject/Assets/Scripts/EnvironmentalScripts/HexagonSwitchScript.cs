@@ -10,7 +10,7 @@ public class HexagonSwitchScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerOne" && !on)
+        if (other.tag == "PlayerOne" && !on || other.tag == "PlayerTwo" && !on)
         {
             lightGameObject = new GameObject("The Light");
             lightGameObject.AddComponent<Light>(); 
@@ -24,9 +24,9 @@ public class HexagonSwitchScript : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "PlayerOne" && on)
+        if (other.tag == "PlayerOne" && on || other.tag == "PlayerTwo" && on)
         {
-            Destroy(lightGameObject.GetComponent<Light>());
+            Destroy(lightGameObject);
             on = false;
         }
     }
