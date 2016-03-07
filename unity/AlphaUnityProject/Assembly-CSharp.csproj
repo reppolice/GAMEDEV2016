@@ -45,6 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CivGridUtility.cs" />
+     <Compile Include="Assets\HexChunk.cs" />
+     <Compile Include="Assets\HexInfo.cs" />
      <Compile Include="Assets\Scripts\CameraScripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\CameraScripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\CameraScripts\LightScript.cs" />
@@ -55,6 +58,7 @@
      <Compile Include="Assets\Scripts\PlayerMechanics\EstablishBond.cs" />
      <Compile Include="Assets\Scripts\VFX\FireflyScript.cs" />
      <Compile Include="Assets\Scripts\VFX\GlowScript.cs" />
+     <Compile Include="Assets\WorldManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

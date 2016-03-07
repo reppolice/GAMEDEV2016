@@ -5,16 +5,23 @@ using System.Collections;
 public class LightScript : MonoBehaviour
 {
     private Light myLight;
-    public float maxIntensity = 100f;
-    public float minIntensity = 0f;
+    public float maxIntensity = 10f;
+    public float minIntensity = 1f;
     public float pulseSpeed = 1f; //here, a value of 0.5f would take 2 seconds and a value of 2f would take half a second
-    private float targetIntensity = 1f;
+	public Color color; 
+	private float targetIntensity = 1f;
     private float currentIntensity;
 
      
     void Start()
     {
-        myLight = GetComponent<Light>();
+		if (!GetComponent<Light> ()) {
+			gameObject.AddComponent<Light> (); 
+			myLight = GetComponent<Light>();
+			myLight.color = color;  
+		} else {
+			myLight = GetComponent<Light>();
+		}
     }
     void Update()
     {
