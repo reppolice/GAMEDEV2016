@@ -20,19 +20,35 @@ public class EstablishBond : MonoBehaviour {
     private GameObject playerTwo;
 
     private bool bondEstablished, channelling = false;
-    private float startTime = 0.0f; 
+    private float startTime = 0.0f;
+
+    private LightScript ls;
+    private Light light; 
 
     void Awake()
     {
         playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
         playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo");
+
+        gameObject.AddComponent<LightScript>();
+        gameObject.AddComponent<Light>(); 
+        ls = GetComponent<LightScript>();
+        light = GetComponent<Light>(); 
+        ls.enabled = false;
+        light.enabled = false; 
+
     }
 
     void Update()
     {
         if (Input.GetButtonDown("EstablishBond") && !GetComponent<LineRenderer>() && !channelling)
         {
-
+            ls.enabled = true;
+            ls.minIntensity = 1;
+            ls.maxIntensity = 6;
+            ls.pulseSpeed = 2;
+            ls.color = Color.white;
+            light.enabled = true;
             startTime = Time.time;
             channelling = true;
             
@@ -40,14 +56,12 @@ public class EstablishBond : MonoBehaviour {
         if (Input.GetButtonUp("EstablishBond"))
         {
             channelling = false;
-            startTime = 0; 
+            light.enabled = false;
+            ls.enabled = false; 
+            startTime = 0;
         }
 
         float timeDifference = Time.time - startTime;
-
-        //Debug.Log("StartTime: " + startTime);
-        //Debug.Log("TimeTime: " + Time.time);
-        //Debug.Log("SecondsPassed: " + timeDifference);
 
         if (timeDifference > 2.0f && timeDifference < 2.2f && channelling)
         {
@@ -85,7 +99,11 @@ public class EstablishBond : MonoBehaviour {
             joint.maxDistance = maxSpringDistance;
             joint.damper = damper;
             joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = new Vector3(-4, 0, 0);  
+            joint.connectedAnchor = new Vector3(-4, 0, 0);
+
+            // Light
+            ls.enabled = false;
+            gameObject.GetComponent<Light>().enabled = false; 
         }
     }
 

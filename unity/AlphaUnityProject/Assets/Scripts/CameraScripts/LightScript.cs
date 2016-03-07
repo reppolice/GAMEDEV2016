@@ -5,7 +5,7 @@ using System.Collections;
 public class LightScript : MonoBehaviour
 {
     private Light myLight;
-    public float maxIntensity = 10f;
+    public float maxIntensity = 8.0f;
     public float minIntensity = 1f;
     public float pulseSpeed = 1f; //here, a value of 0.5f would take 2 seconds and a value of 2f would take half a second
 	public Color color; 
