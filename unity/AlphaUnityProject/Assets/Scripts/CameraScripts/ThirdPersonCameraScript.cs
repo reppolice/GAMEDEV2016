@@ -4,14 +4,15 @@ using System.Collections;
 public class ThirdPersonCameraScript : MonoBehaviour {
 
     [SerializeField]
-    private float distanceAway;
+    private float distanceAway = 8.0f;
     [SerializeField]
-    private float distanceUp;
+    private float distanceUp = 6.0f;
     [SerializeField]
-    private float smooth;
+    private float smooth = 3.0f;
 
     [SerializeField]
     private float maxPlayerDistance; 
+    //TODO: Do camera bounds 
 
     private Transform playerOne;
     private Transform playerTwo;
