@@ -3,9 +3,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-    public float speed = 135;
-    public string horizontal;
-    public string vertical; 
+    public float speed = 30;
+    public string horizontal = "horizontal";
+    public string vertical = "vertical"; 
 
     private Rigidbody rb;
 
