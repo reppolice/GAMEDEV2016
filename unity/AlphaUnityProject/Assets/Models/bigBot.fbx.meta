@@ -15,6 +15,15 @@ ModelImporter:
     100014: r_Hand
     100016: skull
     100018: truster
+    100020: BigBot
+    100022: Joint_Body
+    100024: jointEars
+    100026: jointHead
+    100028: jointLHand
+    100030: jointNeck
+    100032: jointRHand
+    100034: neck
+    100036: R_Hand
     400000: //RootNode
     400002: body
     400004: ears
@@ -25,6 +34,15 @@ ModelImporter:
     400014: r_Hand
     400016: skull
     400018: truster
+    400020: BigBot
+    400022: Joint_Body
+    400024: jointEars
+    400026: jointHead
+    400028: jointLHand
+    400030: jointNeck
+    400032: jointRHand
+    400034: neck
+    400036: R_Hand
     2300000: body
     2300002: ears
     2300004: energy
@@ -34,6 +52,8 @@ ModelImporter:
     2300012: r_Hand
     2300014: skull
     2300016: truster
+    2300018: neck
+    2300020: R_Hand
     3300000: body
     3300002: ears
     3300004: energy
@@ -43,6 +63,8 @@ ModelImporter:
     3300012: r_Hand
     3300014: skull
     3300016: truster
+    3300018: neck
+    3300020: R_Hand
     4300000: skull
     4300002: ears
     4300004: body
@@ -52,6 +74,10 @@ ModelImporter:
     4300012: r_Hand
     4300014: neck1
     4300016: pPipe1
+    4300018: R_Hand
+    4300020: neck
+    7400000: Idle
+    7400002: MoveForward
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -73,7 +99,131 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BigBot
+        weight: 1
+      - path: BigBot/body
+        weight: 1
+      - path: BigBot/energy
+        weight: 1
+      - path: BigBot/l_Hand
+        weight: 1
+      - path: BigBot/neck
+        weight: 1
+      - path: BigBot/neck/ears
+        weight: 1
+      - path: BigBot/neck/neck1
+        weight: 1
+      - path: BigBot/neck/skull
+        weight: 1
+      - path: BigBot/R_Hand
+        weight: 1
+      - path: BigBot/truster
+        weight: 1
+      - path: Joint_Body
+        weight: 1
+      - path: Joint_Body/jointLHand
+        weight: 1
+      - path: Joint_Body/jointNeck
+        weight: 1
+      - path: Joint_Body/jointNeck/jointHead
+        weight: 1
+      - path: Joint_Body/jointNeck/jointHead/jointEars
+        weight: 1
+      - path: Joint_Body/jointRHand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MoveForward
+      takeName: Take 001
+      firstFrame: 41
+      lastFrame: 81
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BigBot
+        weight: 1
+      - path: BigBot/body
+        weight: 1
+      - path: BigBot/energy
+        weight: 1
+      - path: BigBot/l_Hand
+        weight: 1
+      - path: BigBot/neck
+        weight: 1
+      - path: BigBot/neck/ears
+        weight: 1
+      - path: BigBot/neck/neck1
+        weight: 1
+      - path: BigBot/neck/skull
+        weight: 1
+      - path: BigBot/R_Hand
+        weight: 1
+      - path: BigBot/truster
+        weight: 1
+      - path: Joint_Body
+        weight: 1
+      - path: Joint_Body/jointLHand
+        weight: 1
+      - path: Joint_Body/jointNeck
+        weight: 1
+      - path: Joint_Body/jointNeck/jointHead
+        weight: 1
+      - path: Joint_Body/jointNeck/jointHead/jointEars
+        weight: 1
+      - path: Joint_Body/jointRHand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
