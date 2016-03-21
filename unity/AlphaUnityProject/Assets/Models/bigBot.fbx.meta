@@ -1,81 +1,71 @@
 fileFormatVersion: 2
-guid: e65f80386cdc60948906673b3e86dbba
-timeCreated: 1457621332
+guid: 0f956a536d1ad804098010d891da05b4
+timeCreated: 1458568424
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: body
-    100004: ears
-    100006: energy
-    100008: l_Hand
-    100010: neck1
-    100012: pPipe1
-    100014: r_Hand
-    100016: skull
-    100018: truster
-    100020: BigBot
-    100022: Joint_Body
-    100024: jointEars
-    100026: jointHead
-    100028: jointLHand
-    100030: jointNeck
-    100032: jointRHand
-    100034: neck
-    100036: R_Hand
-    400000: //RootNode
-    400002: body
-    400004: ears
-    400006: energy
-    400008: l_Hand
-    400010: neck1
-    400012: pPipe1
-    400014: r_Hand
-    400016: skull
-    400018: truster
-    400020: BigBot
-    400022: Joint_Body
-    400024: jointEars
-    400026: jointHead
-    400028: jointLHand
-    400030: jointNeck
-    400032: jointRHand
-    400034: neck
-    400036: R_Hand
+    100000: BigBot
+    100002: //RootNode
+    100004: body
+    100006: ears
+    100008: energy
+    100010: Joint_Body
+    100012: jointEars
+    100014: jointHead
+    100016: jointLHand
+    100018: jointNeck
+    100020: jointRHand
+    100022: l_Hand
+    100024: neck
+    100026: neck1
+    100028: R_Hand
+    100030: skull
+    100032: truster
+    400000: BigBot
+    400002: //RootNode
+    400004: body
+    400006: ears
+    400008: energy
+    400010: Joint_Body
+    400012: jointEars
+    400014: jointHead
+    400016: jointLHand
+    400018: jointNeck
+    400020: jointRHand
+    400022: l_Hand
+    400024: neck
+    400026: neck1
+    400028: R_Hand
+    400030: skull
+    400032: truster
     2300000: body
     2300002: ears
     2300004: energy
     2300006: l_Hand
-    2300008: neck1
-    2300010: pPipe1
-    2300012: r_Hand
+    2300008: neck
+    2300010: neck1
+    2300012: R_Hand
     2300014: skull
     2300016: truster
-    2300018: neck
-    2300020: R_Hand
     3300000: body
     3300002: ears
     3300004: energy
     3300006: l_Hand
-    3300008: neck1
-    3300010: pPipe1
-    3300012: r_Hand
+    3300008: neck
+    3300010: neck1
+    3300012: R_Hand
     3300014: skull
     3300016: truster
-    3300018: neck
-    3300020: R_Hand
-    4300000: skull
-    4300002: ears
-    4300004: body
-    4300006: energy
-    4300008: truster
-    4300010: l_Hand
-    4300012: r_Hand
-    4300014: neck1
-    4300016: pPipe1
-    4300018: R_Hand
-    4300020: neck
+    4300000: truster
+    4300002: energy
+    4300004: l_Hand
+    4300006: R_Hand
+    4300008: neck
+    4300010: neck1
+    4300012: skull
+    4300014: ears
+    4300016: body
     7400000: Idle
     7400002: MoveForward
     9500000: //RootNode
@@ -173,7 +163,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
