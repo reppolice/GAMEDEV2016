@@ -5,13 +5,15 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 30;
     public string horizontal = "Horizontal";
-    public string vertical = "Vertical"; 
+    public string vertical = "Vertical";
 
+    private Animator anim; 
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>(); 
     }
 
     void FixedUpdate()
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     void Move(float h, float v)
     {
         Vector3 movement = new Vector3(0.0f, 0.0f, 0.0f);
+        anim.SetFloat("Speed", new Vector2(h, v).SqrMagnitude());
 
         if (gameObject.tag == "PlayerTwo")
         {
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour {
         } else
         {
             movement = new Vector3(h, 0.0f, v);
+            
         }
       
         rb.AddForce(movement * speed);
