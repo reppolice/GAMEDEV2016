@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour {
 
     void FixedUpdate()
     {
-        transform.position = player.position + offset;
+        transform.position = Vector3.Lerp(transform.position, player.position + offset, Time.deltaTime * smooth);
         Debug.DrawLine(transform.position, player.position); 
     }
 
@@ -27,6 +27,8 @@ public class CameraFollow : MonoBehaviour {
         offset.x += x;
         offset.y += y;
         offset.z += z;
+
+
     }
 }
 

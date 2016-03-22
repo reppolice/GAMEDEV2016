@@ -23,19 +23,19 @@ public class EstablishBond : MonoBehaviour {
     private float startTime = 0.0f;
 
     private LightScript ls;
-    private Light light; 
+    private Light lightSource;
 
     void Awake()
     {
-        playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
-        playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo");
+        playerOne = GameObject.FindGameObjectWithTag("B4");
+        playerTwo = GameObject.FindGameObjectWithTag("MiMi");
 
         gameObject.AddComponent<LightScript>();
         gameObject.AddComponent<Light>(); 
         ls = GetComponent<LightScript>();
-        light = GetComponent<Light>(); 
+        lightSource = GetComponent<Light>(); 
         ls.enabled = false;
-        light.enabled = false; 
+        lightSource.enabled = false; 
 
     }
 
@@ -48,7 +48,7 @@ public class EstablishBond : MonoBehaviour {
             ls.maxIntensity = 6;
             ls.pulseSpeed = 2;
             ls.color = Color.white;
-            light.enabled = true;
+            lightSource.enabled = true;
             startTime = Time.time;
             channelling = true;
             
@@ -56,7 +56,7 @@ public class EstablishBond : MonoBehaviour {
         if (Input.GetButtonUp("EstablishBond"))
         {
             channelling = false;
-            light.enabled = false;
+            lightSource.enabled = false;
             ls.enabled = false; 
             startTime = 0;
         }
@@ -88,7 +88,7 @@ public class EstablishBond : MonoBehaviour {
             gameObject.AddComponent<LineRenderer>();
             LineRenderer lr = GetComponent<LineRenderer>();
             lr.SetWidth(bondWidthBegin, bondWidthEnd);
-            Vector3[] points = { playerOne.transform.position, playerTwo.transform.position };
+            Vector3[] points = { playerOne.transform.position + new Vector3(0.0f, 2.0f, 0.0f), playerTwo.transform.position + new Vector3(0.0f, 2.0f, 0.0f) };
             lr.SetPositions(points);
             bondEstablished = true;
 
@@ -103,8 +103,11 @@ public class EstablishBond : MonoBehaviour {
 
             // Light
             ls.enabled = false;
-            gameObject.GetComponent<Light>().enabled = false; 
-        }
+            gameObject.GetComponent<Light>().enabled = false;
+            //STILL CONTAINS WORK TO DO: 
+            //CharacterController test = gameObject.GetComponent<CharacterController>();
+           // test.playerStatus; 
+}
     }
 
     void UpdateBond()

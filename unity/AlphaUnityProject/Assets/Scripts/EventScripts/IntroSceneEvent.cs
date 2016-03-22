@@ -3,29 +3,53 @@ using System.Collections;
 
 public class IntroSceneEvent : MonoBehaviour {
 
-    private GameObject B4; 
+    public AudioClip clip; 
+
+    private GameObject B4, MiMi;
+    private AudioSource audioSource; 
     void Start()
     {
-        B4 = GameObject.FindGameObjectWithTag("PlayerOne");
+        B4 = GameObject.FindGameObjectWithTag("B4");
+        MiMi = GameObject.FindGameObjectWithTag("MiMi");
+        audioSource = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioSource>();
+
+        MiMi.GetComponent<PlayerController>().enabled = false;
         B4.GetComponent<PlayerController>().enabled = false;
-        StartCoroutine(ZoomOutCamera(1.0f, 10.0f)); 
-        //StartCoroutine(StartScene(2.0f));
+
+        Vector3 targPos = B4.transform.position + new Vector3(0.0f, 2.0f, -2.0f);
+        StartCoroutine(MoveToPosition(targPos, 5.0f));
     }
 
-    IEnumerator ZoomOutCamera(float time, float zoomAmount)
+    void Update()
     {
-        for (float f = time; f >= 0; f -= 0.1f)
+
+    }
+
+    IEnumerator MoveToPosition(Vector3 newPosition, float time)
+    {
+        //TODO: Clean up this script
+        Camera.main.GetComponent<CameraFollow>().enabled = false;
+
+        float elapsedTime = 0;
+        Vector3 startingPos = Camera.main.transform.position;
+        while (elapsedTime < time)
         {
-            Debug.Log("ZoomOutCamera triggered: with params, time: " + f + ", zoomAmount: " + zoomAmount);
-            Camera.main.GetComponent<CameraFollow>().changeOffset(0.0f, 0.005f, -0.05f);
-            yield return new WaitForSeconds(.1f);
+            Vector3 nextPosition = Vector3.Lerp(startingPos, newPosition, (elapsedTime / time));
+            Camera.main.transform.position = nextPosition;
+            elapsedTime += Time.deltaTime;
+            yield return null; 
         }
-    }
 
-    IEnumerator StartScene(float time)
-    {
         yield return new WaitForSeconds(2.0f);
-        print("WaitAndPrint " + Time.time);
+
+        Camera.main.GetComponent<CameraFollow>().enabled = true;
+        Camera.main.GetComponent<CameraFollow>().smooth = 0.5f;
+        audioSource.PlayOneShot(clip, 0.7F);
+        yield return new WaitForSeconds(3.0f);
+
         B4.GetComponent<PlayerController>().enabled = true;
+        Camera.main.GetComponent<CameraFollow>().smooth = 4.0f;
+
+
     }
 }

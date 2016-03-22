@@ -21,7 +21,7 @@ public class ThirdPersonCameraScript : MonoBehaviour {
 
     void Start()
     {
-        playerOne = GameObject.FindGameObjectWithTag("PlayerOne").transform;
+        playerOne = GameObject.FindGameObjectWithTag("B4").transform;
         playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo").transform;
     }
 
