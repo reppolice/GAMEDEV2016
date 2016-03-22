@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraScript : MonoBehaviour {
+public class CameraFollow : MonoBehaviour {
 
     public Transform player;
-    private Vector3 offset;
     public float smooth = 1.5f;         // The relative speed at which the camera will catch up
 
-    void Awake()
+    private Vector3 offset;
+    //TODO: Integrate smooth
+
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         offset = transform.position - player.position;
     }
 
@@ -18,12 +19,14 @@ public class CameraScript : MonoBehaviour {
     void FixedUpdate()
     {
         transform.position = player.position + offset;
+        Debug.DrawLine(transform.position, player.position); 
     }
 
-
-
-
-
-
+    public void changeOffset(float x, float y, float z)
+    {
+        offset.x += x;
+        offset.y += y;
+        offset.z += z;
+    }
 }
 
