@@ -7,22 +7,36 @@ public class RessurectionScript : MonoBehaviour {
 
     private AudioSource audioSource;
     private Animator anim;
-    private GameObject playerOne, playerTwo;
-    private EventController eventController; 
+    private GameObject playerOne, playerTwo, storyWall;
+    private EventController eventController;
+    private bool sceneIsFinished = false;  
 
     void Awake()
     {
         GameObject controller = GameObject.FindGameObjectWithTag("AudioController");
         audioSource = controller.GetComponent<AudioSource>();
-        playerOne = GameObject.FindGameObjectWithTag("PlayerOne");
-        playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo");
+        playerOne = GameObject.FindGameObjectWithTag("B4");
+        playerTwo = GameObject.FindGameObjectWithTag("MiMi");
+        storyWall = GameObject.FindGameObjectWithTag("StoryWall"); 
         //eventController = GameObject.FindGameObjectWithTag("EventController").GetComponent<EventController>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger entered");
-        triggerRessurcetionEvent();
+        if(other.tag == "B4")
+        {
+            Debug.Log("Trigger entered");
+            triggerRessurcetionEvent();
+        }
+    }
+
+    void Update()
+    {
+        if (sceneIsFinished)
+        {
+            playerTwo.GetComponent<PlayerController>().enabled = true; 
+            Destroy(GetComponent<RessurectionScript>());
+        }
     }
 
     public void triggerRessurcetionEvent()
@@ -30,7 +44,8 @@ public class RessurectionScript : MonoBehaviour {
         Debug.Log("EVENT: ressurection event");
         // camera positioning
 
-        // trigger visuals
+        // trigger story visuals
+        StartCoroutine(FadeInWallStory()); 
 
         // trigger animations
 
@@ -38,14 +53,20 @@ public class RessurectionScript : MonoBehaviour {
         audioSource.clip = clip;
         audioSource.Play();
 
-        // handle character controllers
-        playerOne.GetComponent<PlayerController>().enabled = true;
-        playerTwo.GetComponent<PlayerController>().enabled = false;
-
         // send notification to event handler
         // eventController.handleEvent(ressurectionEvent);
+    }
 
-        // destroy
-        Destroy(GetComponent<RessurectionScript>());
+    IEnumerator FadeInWallStory()
+    {
+        for (float f = 0; f <= 1; f += 0.01f)
+        {
+            Color c = storyWall.GetComponent<Renderer>().material.color;
+            c.a = f;
+            storyWall.GetComponent<Renderer>().material.color = c;
+            yield return null;
+        }
+
+        sceneIsFinished = true;
     }
 }
