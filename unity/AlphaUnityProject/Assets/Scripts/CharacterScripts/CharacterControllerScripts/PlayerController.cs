@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour {
     public string horizontal = "Horizontal";
     public string vertical = "Vertical";
     public float movingTurnSpeed = 10;
-    public float stationaryTurnSpeed = 180; 
+    public float stationaryTurnSpeed = 180;
+    public PlayerStatusScript playerStatus;
 
     private Animator anim; 
     private Rigidbody rb;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>(); 
+        playerStatus = new PlayerStatusScript(); 
     }
 
     void FixedUpdate()
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour {
         if(anim)
             anim.SetFloat("Speed", new Vector2(h, v).SqrMagnitude());
 
-        if (gameObject.tag == "PlayerTwo")
+        if (gameObject.tag == "MiMi")
         {
             v *= -1;
             float deadzone = 0.25f;

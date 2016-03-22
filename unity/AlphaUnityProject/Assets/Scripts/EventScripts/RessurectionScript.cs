@@ -16,7 +16,7 @@ public class RessurectionScript : MonoBehaviour {
         GameObject controller = GameObject.FindGameObjectWithTag("AudioController");
         audioSource = controller.GetComponent<AudioSource>();
         playerOne = GameObject.FindGameObjectWithTag("B4");
-        playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo");
+        playerTwo = GameObject.FindGameObjectWithTag("MiMi");
         storyWall = GameObject.FindGameObjectWithTag("StoryWall"); 
         //eventController = GameObject.FindGameObjectWithTag("EventController").GetComponent<EventController>();
     }
@@ -33,7 +33,10 @@ public class RessurectionScript : MonoBehaviour {
     void Update()
     {
         if (sceneIsFinished)
+        {
+            playerTwo.GetComponent<PlayerController>().enabled = true; 
             Destroy(GetComponent<RessurectionScript>());
+        }
     }
 
     public void triggerRessurcetionEvent()
@@ -41,7 +44,7 @@ public class RessurectionScript : MonoBehaviour {
         Debug.Log("EVENT: ressurection event");
         // camera positioning
 
-        // trigger visuals
+        // trigger story visuals
         StartCoroutine(FadeInWallStory()); 
 
         // trigger animations
@@ -49,10 +52,6 @@ public class RessurectionScript : MonoBehaviour {
         // trigger sounds 
         audioSource.clip = clip;
         audioSource.Play();
-
-        // handle character controllers
-        //playerOne.GetComponent<PlayerController>().enabled = true;
-        //playerTwo.GetComponent<PlayerController>().enabled = false;
 
         // send notification to event handler
         // eventController.handleEvent(ressurectionEvent);
@@ -62,7 +61,6 @@ public class RessurectionScript : MonoBehaviour {
     {
         for (float f = 0; f <= 1; f += 0.01f)
         {
-            Debug.Log("Fading in wall: ");
             Color c = storyWall.GetComponent<Renderer>().material.color;
             c.a = f;
             storyWall.GetComponent<Renderer>().material.color = c;

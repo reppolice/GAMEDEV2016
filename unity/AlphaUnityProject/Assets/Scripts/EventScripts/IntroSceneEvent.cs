@@ -5,15 +5,18 @@ public class IntroSceneEvent : MonoBehaviour {
 
     public AudioClip clip; 
 
-    private GameObject B4;
+    private GameObject B4, MiMi;
     private AudioSource audioSource; 
     void Start()
     {
         B4 = GameObject.FindGameObjectWithTag("B4");
-        B4.GetComponent<PlayerController>().enabled = false;
-        audioSource = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioSource>(); 
-        Vector3 targPos = B4.transform.position + new Vector3(0.0f, 2.0f, -2.0f);
+        MiMi = GameObject.FindGameObjectWithTag("MiMi");
+        audioSource = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioSource>();
 
+        MiMi.GetComponent<PlayerController>().enabled = false;
+        B4.GetComponent<PlayerController>().enabled = false;
+
+        Vector3 targPos = B4.transform.position + new Vector3(0.0f, 2.0f, -2.0f);
         StartCoroutine(MoveToPosition(targPos, 5.0f));
     }
 
