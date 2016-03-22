@@ -104,8 +104,9 @@ public class EstablishBond : MonoBehaviour {
             // Light
             ls.enabled = false;
             gameObject.GetComponent<Light>().enabled = false;
-            CharacterController test = gameObject.GetComponent<CharacterController>();
-            test.playerStatus; 
+            //STILL CONTAINS WORK TO DO: 
+            //CharacterController test = gameObject.GetComponent<CharacterController>();
+           // test.playerStatus; 
 }
     }
 
