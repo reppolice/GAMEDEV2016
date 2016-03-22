@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class PlatformPuzzle : MonoBehaviour {
 
@@ -15,7 +15,7 @@ public class PlatformPuzzle : MonoBehaviour {
     void triggerPlatformEvent()
     {
         // TODO: Move to eventcontroller? 
-        DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
-        gameObject.transform.DOMove(new Vector3(0.0f, 50.0f, 0), 10).SetRelative().SetLoops(1, LoopType.Incremental); 
+       // DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
+       // gameObject.transform.DOMove(new Vector3(0.0f, 50.0f, 0), 10).SetRelative().SetLoops(1, LoopType.Incremental); 
     }
 }
