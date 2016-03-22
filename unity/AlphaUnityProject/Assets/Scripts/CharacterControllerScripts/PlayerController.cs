@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>(); 
+        //anim = GetComponent<Animator>(); 
     }
 
     void FixedUpdate()
@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour {
     void Move(float h, float v)
     {
         Vector3 movement = new Vector3(0.0f, 0.0f, 0.0f);
-        anim.SetFloat("Speed", new Vector2(h, v).SqrMagnitude());
+        if(anim)
+            anim.SetFloat("Speed", new Vector2(h, v).SqrMagnitude());
 
         if (gameObject.tag == "PlayerTwo")
         {
