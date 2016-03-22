@@ -11,22 +11,22 @@ public class PlayerStatusScript  {
         this.isBonded = false; 
     }
 
-    void setBondStatus(bool b)
+    public void setBondStatus(bool b)
     {
         this.isBonded = b; 
     }
 
-    bool getBondStatus(bool b)
+    public bool getBondStatus()
     {
         return this.isBonded;
     }
 
-    void setChannelStatus(bool b)
+    public void setChannelStatus(bool b)
     {
         this.canChannel = b;
     }
 
-    bool getChannelStatus(bool b)
+    public bool getChannelStatus()
     {
         return this.isBonded;
     }

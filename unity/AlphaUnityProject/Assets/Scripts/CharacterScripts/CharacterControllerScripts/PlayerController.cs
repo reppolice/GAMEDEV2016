@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour {
         float h = Input.GetAxis(horizontal);
         float v = Input.GetAxis(vertical);
         Move(h, v);
-        ApplyExtraTurnRotation();
     }
 
     void Move(float h, float v)
@@ -60,10 +59,4 @@ public class PlayerController : MonoBehaviour {
         float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, m_ForwardAmount);
         transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
     }
-
-    void ApplyExtraTurnRotation()
-    {
-        
-    }
-
 }

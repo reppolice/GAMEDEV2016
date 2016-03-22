@@ -103,10 +103,11 @@ public class EstablishBond : MonoBehaviour {
 
             // Light
             ls.enabled = false;
+
+            // Updating playerStatusScript 
+            // TODO: make it happen on both players 
             gameObject.GetComponent<Light>().enabled = false;
-            //STILL CONTAINS WORK TO DO: 
-            //CharacterController test = gameObject.GetComponent<CharacterController>();
-           // test.playerStatus; 
+            gameObject.GetComponent<PlayerController>().playerStatus.setBondStatus(true);
 }
     }
 

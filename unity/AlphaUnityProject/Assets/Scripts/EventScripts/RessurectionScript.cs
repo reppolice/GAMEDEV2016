@@ -61,9 +61,11 @@ public class RessurectionScript : MonoBehaviour {
     {
         for (float f = 0; f <= 1; f += 0.01f)
         {
+            
             Color c = storyWall.GetComponent<Renderer>().material.color;
             c.a = f;
             storyWall.GetComponent<Renderer>().material.color = c;
+            Debug.Log("Fading in! " + c.a + ", " + storyWall.name);
             yield return null;
         }
 
