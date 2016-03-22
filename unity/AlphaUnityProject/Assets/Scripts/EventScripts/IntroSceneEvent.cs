@@ -27,6 +27,5 @@ public class IntroSceneEvent : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
         print("WaitAndPrint " + Time.time);
         B4.GetComponent<PlayerController>().enabled = true;
-
     }
 }
