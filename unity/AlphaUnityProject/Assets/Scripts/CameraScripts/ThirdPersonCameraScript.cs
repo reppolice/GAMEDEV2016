@@ -22,7 +22,7 @@ public class ThirdPersonCameraScript : MonoBehaviour {
     void Start()
     {
         playerOne = GameObject.FindGameObjectWithTag("B4").transform;
-        playerTwo = GameObject.FindGameObjectWithTag("PlayerTwo").transform;
+        playerTwo = GameObject.FindGameObjectWithTag("MiMi").transform;
     }
 
     void FixedUpdate()

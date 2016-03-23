@@ -3,37 +3,39 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
     //TODO: Create values for designers
-    public GameObject player, playerTwo; 
+    public CameraTypes type;
+    public GameObject player, playerTwo;
 
-    private ThirdPersonCameraScript thirdPersonCamera;
-    private CameraFollow singlePersonCamera;
-
-    public enum CameraTypes {
-        THIRD_PERSON_CAMERA, 
+    public enum CameraTypes
+    {
+        THIRD_PERSON_CAMERA,
         SINGLE_PERSON_CAMERA
     }
+    
+    private ThirdPersonCameraScript thirdPersonCamera;
+    private CameraFollow singlePersonCamera;
 
     void Start()
     {
         thirdPersonCamera = gameObject.AddComponent<ThirdPersonCameraScript>();
         singlePersonCamera = gameObject.AddComponent<CameraFollow>();
 
-        // Testing and hardcoded: 
-        gameObject.GetComponent<ThirdPersonCameraScript>().enabled = false;
-
         if (!player)
-            singlePersonCamera.player = GameObject.FindGameObjectWithTag("PlayerTwo").transform;
+            singlePersonCamera.player = GameObject.FindGameObjectWithTag("B4").transform;
         else
-            singlePersonCamera.player = player.transform; 
+            singlePersonCamera.player = player.transform;
+
+        changeCameraType(type); 
     }
 
     public void changeCameraType(CameraTypes type)
     {
+        Debug.Log("Changing camera type to type: " + type); 
         if(type == CameraTypes.SINGLE_PERSON_CAMERA)
             transitionToSinglePersonCamera(); 
             
         if(type == CameraTypes.THIRD_PERSON_CAMERA)
-            transitionToSinglePersonCamera();
+            transitionToThirdPersonCamera();
 
    }
 
@@ -48,6 +50,7 @@ public class CameraController : MonoBehaviour {
 
     private void transitionToThirdPersonCamera()
     {
+        Debug.Log("Transistioning to thirdpersoncamera"); 
         thirdPersonCamera.enabled = true;
         singlePersonCamera.enabled = false;
 

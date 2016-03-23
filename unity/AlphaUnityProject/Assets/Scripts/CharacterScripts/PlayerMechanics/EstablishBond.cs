@@ -19,7 +19,8 @@ public class EstablishBond : MonoBehaviour {
     private GameObject playerOne;
     private GameObject playerTwo;
 
-    private bool bondEstablished, channelling = false;
+    private bool bondEstablished, channeling = false;
+    //TODO: Make time variables public and editable
     private float startTime = 0.0f;
 
     private LightScript ls;
@@ -41,7 +42,7 @@ public class EstablishBond : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("EstablishBond") && !GetComponent<LineRenderer>() && !channelling)
+        if (Input.GetButtonDown("EstablishBond") && !GetComponent<LineRenderer>() && !channeling)
         {
             ls.enabled = true;
             ls.minIntensity = 1;
@@ -50,12 +51,12 @@ public class EstablishBond : MonoBehaviour {
             ls.color = Color.white;
             lightSource.enabled = true;
             startTime = Time.time;
-            channelling = true;
+            channeling = true;
             
         }
         if (Input.GetButtonUp("EstablishBond"))
         {
-            channelling = false;
+            channeling = false;
             lightSource.enabled = false;
             ls.enabled = false; 
             startTime = 0;
@@ -63,10 +64,10 @@ public class EstablishBond : MonoBehaviour {
 
         float timeDifference = Time.time - startTime;
 
-        if (timeDifference > 2.0f && timeDifference < 2.2f && channelling)
+        if (timeDifference > 2.0f && timeDifference < 2.2f && channeling)
         {
             CreateBond();
-            channelling = false; 
+            channeling = false; 
         }
 
         if (bondEstablished && GetComponent<LineRenderer>())
@@ -107,8 +108,9 @@ public class EstablishBond : MonoBehaviour {
             // Updating playerStatusScript 
             // TODO: make it happen on both players 
             gameObject.GetComponent<Light>().enabled = false;
-            gameObject.GetComponent<PlayerController>().playerStatus.setBondStatus(true);
-}
+            playerOne.GetComponent<PlayerController>().playerStatus.setBondStatus(true);
+            playerTwo.GetComponent<PlayerController>().playerStatus.setBondStatus(true);
+        }
     }
 
     void UpdateBond()

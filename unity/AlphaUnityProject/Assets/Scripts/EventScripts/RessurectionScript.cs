@@ -17,7 +17,7 @@ public class RessurectionScript : MonoBehaviour {
         audioSource = controller.GetComponent<AudioSource>();
         playerOne = GameObject.FindGameObjectWithTag("B4");
         playerTwo = GameObject.FindGameObjectWithTag("MiMi");
-        storyWall = GameObject.FindGameObjectWithTag("StoryWall"); 
+        storyWall = GameObject.FindGameObjectWithTag("StoryWall"); // Make this variable public
         //eventController = GameObject.FindGameObjectWithTag("EventController").GetComponent<EventController>();
     }
 
@@ -34,7 +34,13 @@ public class RessurectionScript : MonoBehaviour {
     {
         if (sceneIsFinished)
         {
-            playerTwo.GetComponent<PlayerController>().enabled = true; 
+            playerTwo.GetComponent<PlayerController>().enabled = true;
+
+            // Change camera
+            CameraController cameraController = Camera.main.GetComponent<CameraController>();
+            cameraController.changeCameraType(CameraController.CameraTypes.THIRD_PERSON_CAMERA);
+            Debug.Log("End of routine"); 
+
             Destroy(GetComponent<RessurectionScript>());
         }
     }
@@ -65,7 +71,7 @@ public class RessurectionScript : MonoBehaviour {
             Color c = storyWall.GetComponent<Renderer>().material.color;
             c.a = f;
             storyWall.GetComponent<Renderer>().material.color = c;
-            Debug.Log("Fading in! " + c.a + ", " + storyWall.name);
+            //Debug.Log("Fading in! " + c.a + ", " + storyWall.name);
             yield return null;
         }
 
