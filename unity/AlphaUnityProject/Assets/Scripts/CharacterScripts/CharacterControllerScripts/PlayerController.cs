@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,14 +13,21 @@ public class PlayerController : MonoBehaviour {
 
     private Animator anim; 
     private Rigidbody rb;
+    private Text guiText; 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>(); 
-        playerStatus = new PlayerStatusScript(); 
+        playerStatus = new PlayerStatusScript();
+        guiText = GameObject.FindGameObjectWithTag("GUIText").GetComponent<Text>();
+        guiText.text = "isBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus(); 
     }
 
+    void Update()
+    {
+        UpdateGUI(); 
+    }
     void FixedUpdate()
     {
         float h = Input.GetAxis(horizontal);
@@ -58,5 +66,10 @@ public class PlayerController : MonoBehaviour {
         float m_ForwardAmount = movement.z;
         float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, m_ForwardAmount);
         transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
+    }
+
+    void UpdateGUI()
+    {
+        guiText.text = "isBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus();
     }
 }

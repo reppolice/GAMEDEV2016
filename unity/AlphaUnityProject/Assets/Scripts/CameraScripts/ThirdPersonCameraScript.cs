@@ -32,12 +32,12 @@ public class ThirdPersonCameraScript : MonoBehaviour {
         Vector3 offset = new Vector3(0, 0, 2);
         targetPosition = middlePosition + Vector3.up * distanceUp - offset * distanceAway;
 
-        Debug.DrawRay(playerOne.position, Vector3.up * distanceUp, Color.red);
-        Debug.DrawRay(playerOne.position, -1f * playerOne.forward * distanceAway, Color.red );
-        Debug.DrawRay(playerTwo.position, -1f * playerTwo.forward * distanceAway, Color.red);
-        Debug.DrawLine(playerOne.position, targetPosition, Color.green);
-        Debug.DrawLine(playerTwo.position, targetPosition, Color.green);
-        Debug.DrawLine(transform.position, middlePosition, Color.blue);
+        //Debug.DrawRay(playerOne.position, Vector3.up * distanceUp, Color.red);
+        //Debug.DrawRay(playerOne.position, -1f * playerOne.forward * distanceAway, Color.red );
+        //Debug.DrawRay(playerTwo.position, -1f * playerTwo.forward * distanceAway, Color.red);
+        //Debug.DrawLine(playerOne.position, targetPosition, Color.green);
+        //Debug.DrawLine(playerTwo.position, targetPosition, Color.green);
+        //Debug.DrawLine(transform.position, middlePosition, Color.blue);
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smooth);
         transform.LookAt(middlePosition);

@@ -25,12 +25,15 @@ public class EstablishBond : MonoBehaviour {
 
     private LightScript ls;
     private Light lightSource;
+    private PlayerStatusScript B4Status;
+    private PlayerStatusScript MiMiStatus;
 
     void Awake()
     {
         playerOne = GameObject.FindGameObjectWithTag("B4");
         playerTwo = GameObject.FindGameObjectWithTag("MiMi");
-
+        B4Status = playerOne.GetComponent<PlayerController>().playerStatus;
+        MiMiStatus = playerOne.GetComponent<PlayerController>().playerStatus;
         gameObject.AddComponent<LightScript>();
         gameObject.AddComponent<Light>(); 
         ls = GetComponent<LightScript>();
@@ -104,12 +107,15 @@ public class EstablishBond : MonoBehaviour {
 
             // Light
             ls.enabled = false;
+            //gameObject.GetComponent<Light>().enabled = false;
 
             // Updating playerStatusScript 
             // TODO: make it happen on both players 
-            gameObject.GetComponent<Light>().enabled = false;
-            playerOne.GetComponent<PlayerController>().playerStatus.setBondStatus(true);
-            playerTwo.GetComponent<PlayerController>().playerStatus.setBondStatus(true);
+
+            B4Status = playerOne.GetComponent<PlayerController>().playerStatus;
+            MiMiStatus = playerOne.GetComponent<PlayerController>().playerStatus;
+            B4Status.setBondStatus(true);
+            MiMiStatus.setBondStatus(true);
         }
     }
 
@@ -123,6 +129,8 @@ public class EstablishBond : MonoBehaviour {
     void DestroyBond()
     {
         Destroy(gameObject.GetComponent<LineRenderer>());
-        Destroy(gameObject.GetComponent<SpringJoint>()); 
+        Destroy(gameObject.GetComponent<SpringJoint>());
+        B4Status.setBondStatus(false);
+        MiMiStatus.setBondStatus(false);
     }
 }
