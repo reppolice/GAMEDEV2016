@@ -1,4 +1,4 @@
-﻿# =============== #
+# =============== #
 # Unity generated #
 # =============== #
 [Tt]emp/
@@ -32,3 +32,18 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 [Tt]humbs.db
+unity/AlphaUnityProject/Assets/Demigiant/DOTween.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/DOTween.dll.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Editor.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Basics.cs
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Basics.cs.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Basics.unity
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Basics.unity.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Sequences.cs
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Sequences.cs.meta
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Sequences.unity
+unity/AlphaUnityProject/Assets/Demigiant/DOTween/Examples/Sequences.unity.meta
+unity/AlphaUnityProject/Assets/Demigiant.meta
+unity/AlphaUnityProject/Assets/Materials/Textures/Thumbs.db.meta
