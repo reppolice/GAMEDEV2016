@@ -103,7 +103,87 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: glass
+        weight: 1
+      - path: glass/glassSphere
+        weight: 1
+      - path: glass/glassSphere/energy
+        weight: 1
+      - path: glass/glassSphere/energy/transform1
+        weight: 1
+      - path: glass/glassSphere/transform2
+        weight: 1
+      - path: pCube6
+        weight: 1
+      - path: pCube6/pCube1
+        weight: 1
+      - path: pCube6/pCube1/transform11
+        weight: 1
+      - path: pCube6/pCube2
+        weight: 1
+      - path: pCube6/pCube2/transform10
+        weight: 1
+      - path: pCube6/pCube3
+        weight: 1
+      - path: pCube6/pCube3/transform9
+        weight: 1
+      - path: pCube6/pCube4
+        weight: 1
+      - path: pCube6/pCube4/transform8
+        weight: 1
+      - path: pCube6/pCube5
+        weight: 1
+      - path: pCube6/pCube5/transform7
+        weight: 1
+      - path: pCube6/transform12
+        weight: 1
+      - path: pTorus1
+        weight: 1
+      - path: pTorus1/pTorus2
+        weight: 1
+      - path: pTorus1/pTorus3
+        weight: 1
+      - path: pTorus1/pTorus4
+        weight: 1
+      - path: pTorus1/pTorus5
+        weight: 1
+      - path: turning
+        weight: 1
+      - path: turning/polySurface3
+        weight: 1
+      - path: turning/transform13
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
