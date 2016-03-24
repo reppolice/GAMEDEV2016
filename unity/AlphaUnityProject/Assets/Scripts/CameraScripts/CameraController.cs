@@ -30,7 +30,6 @@ public class CameraController : MonoBehaviour {
 
     public void changeCameraType(CameraTypes type)
     {
-        Debug.Log("Changing camera type to type: " + type); 
         if(type == CameraTypes.SINGLE_PERSON_CAMERA)
             transitionToSinglePersonCamera(); 
             
@@ -50,7 +49,6 @@ public class CameraController : MonoBehaviour {
 
     private void transitionToThirdPersonCamera()
     {
-        Debug.Log("Transistioning to thirdpersoncamera"); 
         thirdPersonCamera.enabled = true;
         singlePersonCamera.enabled = false;
 
