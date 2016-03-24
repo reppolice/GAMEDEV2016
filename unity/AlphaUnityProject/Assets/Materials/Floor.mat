@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Floor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _NORMALMAP _PARALLAXMAP
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: c61eeb48222fca048a09ee4f60375492, type: 3}
-          m_Scale: {x: 12, y: 10}
+          m_Texture: {fileID: 2800000, guid: 79f8eb2c8fc90ee4eb4fbfea9ab6e5ce, type: 3}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 92a2c3663ef60b94aa54336df9a78785, type: 3}
+          m_Texture: {fileID: 2800000, guid: a991150b2d840aa4b95e3057d1cdc410, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -40,14 +40,14 @@ Material:
         first:
           name: _ParallaxMap
         second:
-          m_Texture: {fileID: 2800000, guid: 2687441a0ab122249b2620fb453ebce6, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _OcclusionMap
         second:
-          m_Texture: {fileID: 2800000, guid: cb08de6b8d3c85c498bdb8e7009b9739, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -55,7 +55,7 @@ Material:
           name: _EmissionMap
         second:
           m_Texture: {fileID: 0}
-          m_Scale: {x: 12, y: 10}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
