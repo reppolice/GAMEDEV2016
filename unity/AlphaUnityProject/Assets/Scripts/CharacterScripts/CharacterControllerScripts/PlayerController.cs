@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,15 +13,20 @@ public class PlayerController : MonoBehaviour {
     public PlayerStatusScript playerStatus;
     public bool debugMode = true;
 
+    [HideInInspector]
+    public List<GameObject> enemies = new List<GameObject>();
+
     private Animator anim; 
     private Rigidbody rb;
     private Text playerGUIStatus;
+    
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>(); 
-        playerStatus = new PlayerStatusScript();
+        playerStatus = new PlayerStatusScript(speed);
+
         if (debugMode && gameObject.tag == "B4")
             playerGUIStatus = GameObject.FindGameObjectWithTag("GUIB4Status").GetComponent<Text>();
         
@@ -31,7 +37,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        UpdateGUI(); 
+        UpdateGUI();
+        playerStatus.setSpeed(speed);
     }
 
     void FixedUpdate()
@@ -76,6 +83,27 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateGUI()
     {
-        playerGUIStatus.text = gameObject.name + "\nisBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus();
+        if (playerGUIStatus)
+        {
+            playerGUIStatus.text = gameObject.name + "\nisBonded: " + playerStatus.isBonded +
+                "\ncanChannel: " + playerStatus.getChannelStatus() +
+                "\nspeed: " + playerStatus.getSpeed();
+        } else
+        {
+            Debug.Log("Warning: You are trying to update the GUI but you have no GUI elements in your scene!"); 
+        }
     }
+
+    public void DetachEnemies()
+    {
+        Debug.Log("Detaching enemies");
+        foreach(GameObject enemy in enemies)
+        {
+            Debug.Log("Detaching enemy: " + enemy);
+            enemy.transform.parent = null;
+            speed += 2.0f; 
+            //enemy.GetComponent<NavMeshAgent>().destination = Vector3.zero;
+        }
+    }
+
 }

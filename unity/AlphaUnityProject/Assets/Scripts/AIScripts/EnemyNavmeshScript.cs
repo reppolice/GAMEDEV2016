@@ -33,7 +33,8 @@ public class EnemyNavmeshScript : MonoBehaviour {
     {
         // Adjust sphere behavioural components
         GetComponent<NavMeshAgent>().enabled = false;
-
+        GetComponent<SphereCollider>().enabled = false; 
+        
         // Child gameObject and collision
         transform.position = target.transform.position + new Vector3(0.0f, 0.5f, 0.0f) + new Vector3(0.0f, 0.0f, 0.2f);
         transform.parent = target.transform;
@@ -44,13 +45,9 @@ public class EnemyNavmeshScript : MonoBehaviour {
         // SFX 
 
         // Edit player speed, and set status 
-        target.GetComponent<PlayerController>().speed += -2.0f; 
+        target.GetComponent<PlayerController>().speed += -2.0f;
+        target.GetComponent<PlayerController>().enemies.Add(gameObject); 
 
         // Adjust ambient light  
-    }
-
-    public void DetachStickySphere()
-    {
-
     }
 }

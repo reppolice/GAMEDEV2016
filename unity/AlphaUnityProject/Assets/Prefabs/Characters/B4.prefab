@@ -891,6 +891,7 @@ MonoBehaviour:
   vertical: Vertical
   movingTurnSpeed: 360
   stationaryTurnSpeed: 180
+  debugMode: 1
 --- !u!114 &11497818
 MonoBehaviour:
   m_ObjectHideFlags: 1

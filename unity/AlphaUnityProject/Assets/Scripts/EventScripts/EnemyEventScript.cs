@@ -18,7 +18,6 @@ public class EnemyEventScript : MonoBehaviour {
         if (other.tag == "B4")
             TriggerEnemyEvent();
             
-
     }
 
     void FixedUpdate()

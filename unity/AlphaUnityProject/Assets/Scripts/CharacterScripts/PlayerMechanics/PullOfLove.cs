@@ -23,10 +23,6 @@ public class PullOfLove : MonoBehaviour {
     void Update()
     {
 
-
-        
-
-
         // This needs to be set here, but ideally needs to happen in another function. 
         // This is caused since playerStatusScript is created in the Start of another function i think 
         // TODO: Fix it
@@ -34,27 +30,43 @@ public class PullOfLove : MonoBehaviour {
         MiMiStatus = MiMi.GetComponent<PlayerController>().playerStatus;
 
         // Makes sure we can't spam the button
-
         if(B4Status.getBondStatus() && Input.GetKey(KeyCode.T))
         {
             float timeDifference = Time.time - startTime;
             if (timeDifference > timeDelay)
             {
                 startTime = Time.time;
-                PullPlayer();
+                PullPlayer(MiMi);
+            }
+        }
+
+        if (MiMiStatus.getBondStatus() && Input.GetKey(KeyCode.H))
+        {
+            float timeDifference = Time.time - startTime;
+            if (timeDifference > timeDelay)
+            {
+                startTime = Time.time;
+                PullPlayer(B4);
             }
         }
     }
 
-    void PullPlayer()
+    void PullPlayer(GameObject character)
     {
-        if (gameObject.tag == "B4")
-        {
-            middlePosition = (MiMi.transform.position + transform.position) / 2.0f;
-            Debug.DrawLine(transform.position, middlePosition, Color.white);
-            Vector3 forceVector = middlePosition - MiMi.transform.position; 
-            Debug.Log("Adding force with vec3: " + forceVector);
-            MiMi.GetComponent<Rigidbody>().AddForce(forceVector * pullEffect);
-        }
+        // Add force in player direction 
+        middlePosition = (B4.transform.position + MiMi.transform.position) / 2.0f;
+        Vector3 forceVector = middlePosition - character.transform.position;
+        character.GetComponent<Rigidbody>().AddForce(forceVector * pullEffect);
+
+        //For debugging
+        Debug.DrawLine(character.transform.position, middlePosition, Color.white);
+        Debug.Log("Adding force with vec3: " + forceVector);
+
+        // Notify player scripts of the pull effect 
+        character.GetComponent<PlayerController>().DetachEnemies(); 
+
+        //Trigger coroutine for x seconds to start spheres chase again
+            
+            
     }
 }

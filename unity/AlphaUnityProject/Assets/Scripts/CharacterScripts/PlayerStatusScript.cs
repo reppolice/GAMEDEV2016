@@ -3,12 +3,26 @@ using System.Collections;
 
 public class PlayerStatusScript  {
     public bool canChannel;
-    public bool isBonded; 
+    public bool isBonded;
+    public float speed; 
+    public int enemiesAttached; 
 
-    public PlayerStatusScript()
+    public PlayerStatusScript(float speed)
     {
+        this.speed = speed;
+        this.enemiesAttached = 0; 
         this.canChannel = false;
         this.isBonded = false; 
+    }
+
+    public void setSpeed(float speed)
+    {
+        this.speed = speed; 
+    }
+
+    public float getSpeed()
+    {
+        return this.speed;
     }
 
     public void setBondStatus(bool b)
