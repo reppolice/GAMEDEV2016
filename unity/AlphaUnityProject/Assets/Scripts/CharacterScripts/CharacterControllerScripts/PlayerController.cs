@@ -10,19 +10,23 @@ public class PlayerController : MonoBehaviour {
     public float movingTurnSpeed = 10;
     public float stationaryTurnSpeed = 180;
     public PlayerStatusScript playerStatus;
+    public bool debugMode = true;
 
     private Animator anim; 
     private Rigidbody rb;
-    private Text guiText; 
-
+    private Text playerGUIStatus;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>(); 
         playerStatus = new PlayerStatusScript();
-        if (GameObject.FindGameObjectsWithTag("GUIText").Length > 0 )
-            guiText = GameObject.FindGameObjectWithTag("GUIText").GetComponent<Text>();
-     
+        if (debugMode && gameObject.tag == "B4")
+            playerGUIStatus = GameObject.FindGameObjectWithTag("GUIB4Status").GetComponent<Text>();
+        
+        if(debugMode && gameObject.tag == "MiMi")
+            playerGUIStatus = GameObject.FindGameObjectWithTag("GUIMiMiStatus").GetComponent<Text>();
+
     }
 
     void Update()
@@ -72,7 +76,6 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateGUI()
     {
-        if(guiText)
-            guiText.text = "isBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus();
+        playerGUIStatus.text = gameObject.name + "\nisBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus();
     }
 }

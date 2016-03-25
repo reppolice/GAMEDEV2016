@@ -16,8 +16,7 @@ public class EstablishBond : MonoBehaviour {
     [SerializeField]
     public float maxSpringDistance = 10.0f;
 
-    private GameObject playerOne;
-    private GameObject playerTwo;
+    private GameObject B4, MiMi;
 
     private bool bondEstablished, channeling = false;
     //TODO: Make time variables public and editable
@@ -30,10 +29,10 @@ public class EstablishBond : MonoBehaviour {
 
     void Awake()
     {
-        playerOne = GameObject.FindGameObjectWithTag("B4");
-        playerTwo = GameObject.FindGameObjectWithTag("MiMi");
-        B4Status = playerOne.GetComponent<PlayerController>().playerStatus;
-        MiMiStatus = playerOne.GetComponent<PlayerController>().playerStatus;
+        B4 = GameObject.FindGameObjectWithTag("B4");
+        MiMi = GameObject.FindGameObjectWithTag("MiMi");
+        B4Status = B4.GetComponent<PlayerController>().playerStatus;
+        MiMiStatus = MiMi.GetComponent<PlayerController>().playerStatus;
         gameObject.AddComponent<LightScript>();
         gameObject.AddComponent<Light>(); 
         ls = GetComponent<LightScript>();
@@ -92,14 +91,14 @@ public class EstablishBond : MonoBehaviour {
             gameObject.AddComponent<LineRenderer>();
             LineRenderer lr = GetComponent<LineRenderer>();
             lr.SetWidth(bondWidthBegin, bondWidthEnd);
-            Vector3[] points = { playerOne.transform.position + new Vector3(0.0f, 2.0f, 0.0f), playerTwo.transform.position + new Vector3(0.0f, 2.0f, 0.0f) };
+            Vector3[] points = { B4.transform.position + new Vector3(0.0f, 2.0f, 0.0f), MiMi.transform.position + new Vector3(0.0f, 2.0f, 0.0f) };
             lr.SetPositions(points);
             bondEstablished = true;
 
             // Springjoint: 
             gameObject.AddComponent<SpringJoint>();
             SpringJoint joint = GetComponent<SpringJoint>();
-            joint.connectedBody = playerTwo.GetComponent<Rigidbody>(); 
+            joint.connectedBody = MiMi.GetComponent<Rigidbody>(); 
             joint.maxDistance = maxSpringDistance;
             joint.damper = damper;
             joint.autoConfigureConnectedAnchor = false;
@@ -111,9 +110,8 @@ public class EstablishBond : MonoBehaviour {
 
             // Updating playerStatusScript 
             // TODO: make it happen on both players 
-
-            B4Status = playerOne.GetComponent<PlayerController>().playerStatus;
-            MiMiStatus = playerOne.GetComponent<PlayerController>().playerStatus;
+            B4Status = B4.GetComponent<PlayerController>().playerStatus;
+            MiMiStatus = MiMi.GetComponent<PlayerController>().playerStatus;
             B4Status.setBondStatus(true);
             MiMiStatus.setBondStatus(true);
         }
@@ -122,7 +120,7 @@ public class EstablishBond : MonoBehaviour {
     void UpdateBond()
     {
         LineRenderer lr = gameObject.GetComponent<LineRenderer>();
-        Vector3[] points = { playerOne.transform.position, playerTwo.transform.position };
+        Vector3[] points = { B4.transform.position, MiMi.transform.position };
         lr.SetPositions(points);
     } 
 

@@ -11,8 +11,8 @@ TagManager:
   - PlayerOne
   - EventHandler
   - PlayerTwo
-  - GUIText
-  - Enemy
+  - GUIB4Status
+  - GUIMiMiStatus
   layers:
   - Default
   - TransparentFX

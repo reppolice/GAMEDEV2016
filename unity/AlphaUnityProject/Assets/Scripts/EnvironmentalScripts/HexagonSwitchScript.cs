@@ -4,7 +4,7 @@ using System.Collections;
 public class HexagonSwitchScript : MonoBehaviour {
 
     public float lightIntensity = 5.0f;
-    public PlatformPuzzleEvent puzzleEvent; 
+    //public PlatformPuzzleEvent puzzleEvent; 
     private bool canChanel, channeling, hasPlayer, isActive = false; 
     private GameObject lightGameObject, player;
     private float startTime = 0.0f;
@@ -20,6 +20,9 @@ public class HexagonSwitchScript : MonoBehaviour {
             {
                 LightPlatform();
                 player.GetComponent<PlayerController>().playerStatus.setChannelStatus(true);
+            } else
+            {
+                Debug.Log("Bond status: " + player.GetComponent<PlayerController>().playerStatus.getBondStatus());
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canChanel)
@@ -45,6 +48,7 @@ public class HexagonSwitchScript : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Triggered");
         hasPlayer = true; 
 
         if (other.tag == "B4"|| other.tag == "MiMi")

@@ -35,6 +35,8 @@ public class RessurectionScript : MonoBehaviour {
         if (sceneIsFinished)
         {
             playerTwo.GetComponent<PlayerController>().enabled = true;
+            playerOne.GetComponent<PullOfLove>().enabled = true;
+            playerOne.GetComponent<EstablishBond>().enabled = true;
 
             // Change camera
             CameraController cameraController = Camera.main.GetComponent<CameraController>();
@@ -48,9 +50,8 @@ public class RessurectionScript : MonoBehaviour {
     public void triggerRessurcetionEvent()
     {
         Debug.Log("EVENT: ressurection event");
-        // camera positioning
 
-        // trigger story visuals
+        // trigger coroutines
         StartCoroutine(FadeInWallStory()); 
 
         // trigger animations

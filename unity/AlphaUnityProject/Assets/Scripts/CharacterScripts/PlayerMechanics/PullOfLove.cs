@@ -34,10 +34,7 @@ public class PullOfLove : MonoBehaviour {
         MiMiStatus = MiMi.GetComponent<PlayerController>().playerStatus;
 
         // Makes sure we can't spam the button
-        if (Input.GetKey(KeyCode.R))
-        {
-            MiMi.transform.LookAt(transform.position);
-        }
+
         if(B4Status.getBondStatus() && Input.GetKey(KeyCode.T))
         {
             float timeDifference = Time.time - startTime;
