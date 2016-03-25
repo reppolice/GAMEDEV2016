@@ -20,14 +20,16 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         //anim = GetComponent<Animator>(); 
         playerStatus = new PlayerStatusScript();
-        guiText = GameObject.FindGameObjectWithTag("GUIText").GetComponent<Text>();
-        guiText.text = "isBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus(); 
+        if (GameObject.FindGameObjectsWithTag("GUIText").Length > 0 )
+            guiText = GameObject.FindGameObjectWithTag("GUIText").GetComponent<Text>();
+     
     }
 
     void Update()
     {
         UpdateGUI(); 
     }
+
     void FixedUpdate()
     {
         float h = Input.GetAxis(horizontal);
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateGUI()
     {
-        guiText.text = "isBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus();
+        if(guiText)
+            guiText.text = "isBonded: " + playerStatus.isBonded + "\ncanChannel: " + playerStatus.getChannelStatus();
     }
 }

@@ -11,6 +11,8 @@ TagManager:
   - PlayerOne
   - EventHandler
   - PlayerTwo
+  - GUIT
+  - GUIText
   layers:
   - Default
   - TransparentFX
