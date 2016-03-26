@@ -7,7 +7,8 @@ public class CombineCharacters : MonoBehaviour {
     public float xOffset = 1.0f; 
 
     private bool isCarrying = false;
-    private bool inProximity = false; 
+    private bool inProximity = false;
+    private AudioSource[] audioSources; // 0 = song, 1 = beamup, 2 = beamdown, 3 = channelling, 4 = pull, 5 = combine
 
     void FixedUpdate()
     {
@@ -45,6 +46,7 @@ public class CombineCharacters : MonoBehaviour {
         characterToBeCombinded.GetComponent<SphereCollider>().enabled = false;
         characterToBeCombinded.GetComponent<PlayerController>().enabled = false; 
         isCarrying = true;
+        audioSources[5].Play();
     }
 
     void DetachBalls()
@@ -53,5 +55,12 @@ public class CombineCharacters : MonoBehaviour {
         characterToBeCombinded.GetComponent<PlayerController>().enabled = true;
         characterToBeCombinded.GetComponent<SphereCollider>().enabled = true;
         isCarrying = false;
+        audioSources[2].Play();
+    }
+
+    void Start()
+    {
+        GameObject controller = GameObject.FindGameObjectWithTag("AudioController");
+        audioSources = controller.GetComponents<AudioSource>();
     }
 }

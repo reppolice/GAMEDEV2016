@@ -8,6 +8,7 @@ public class HexagonSwitchScript : MonoBehaviour {
     private bool canChanel, channeling, hasPlayer, isActive = false; 
     private GameObject lightGameObject, player;
     private float startTime = 0.0f;
+    private AudioSource[] audioSources; // 0 = song, 1 = beamup, 2 = beamdown, 3 = channelling, 4 = pull, 5 = combine
 
 
 
@@ -30,11 +31,18 @@ public class HexagonSwitchScript : MonoBehaviour {
                 startTime = Time.time;
                 channeling = true;
                 Debug.Log("Setting start timer to: " + startTime);
+                audioSources[3].Play();
                 
             }
 
             if (Input.GetButtonUp("Channelling"))
             {
+                float timeDifference = Time.time - startTime;
+                if (timeDifference < 3.0f)
+                {
+                    audioSources[3].Stop();
+                }
+
                 Debug.Log("End of channelling");
                 channeling = false;
                 startTime = 0;
@@ -81,20 +89,28 @@ public class HexagonSwitchScript : MonoBehaviour {
     {
         float timeDifference = Time.time - startTime;
 
-        if (timeDifference > 2.0f && timeDifference < 2.2f && channeling)
+        if (timeDifference > 3.0f && timeDifference < 3.2f && channeling)
         {
-            Debug.Log("Channelled for two seconds");
+            Debug.Log("Channelled for three seconds");
             isActive = true; 
             channeling = false;
         }
         else
         {
-            Debug.Log("timeDifference: " + timeDifference + ", is less than 2.0f");
+            Debug.Log("timeDifference: " + timeDifference + ", is less than 3.0f");
+
         }
     }
 
     public bool getStatus()
     {
         return isActive;
+    }
+
+    void Start()
+    {
+        GameObject controller = GameObject.FindGameObjectWithTag("AudioController");
+        audioSources = controller.GetComponents<AudioSource>();
+
     }
 }
