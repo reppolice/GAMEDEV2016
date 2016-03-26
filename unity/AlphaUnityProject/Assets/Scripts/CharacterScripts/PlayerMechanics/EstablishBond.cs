@@ -25,7 +25,7 @@ public class EstablishBond : MonoBehaviour {
     private float startTime = 0.0f;
 
     private LightScript ls;
-    private AudioSource[] audioSources; // 0 = song, 1 = beamup, 2 = beamdown, 3 = channelling
+    private AudioSource[] audioSources; // 0 = song, 1 = beamup, 2 = beamdown, 3 = channelling, 4 = pull, 5 = combine
     private Light lightSource;
     private PlayerStatusScript B4Status;
     private PlayerStatusScript MiMiStatus;
@@ -61,17 +61,20 @@ public class EstablishBond : MonoBehaviour {
             chargeBond = true;
             audioSources[3].Play();
         }
+        float timeDifference = Time.time - startTime;
         if (Input.GetButtonUp("EstablishBond"))
         {
             chargeBond = false;
             lightSource.enabled = false;
             ls.enabled = false; 
             startTime = 0;
+            if (timeDifference < 3.0f)
+            {
+                audioSources[3].Stop();
+            }
         }
 
-        float timeDifference = Time.time - startTime;
-
-        if (timeDifference > 3.0f && timeDifference < 3.2f && chargeBond)
+        if (timeDifference >= 3.0f && timeDifference < 3.2f && chargeBond)
         {
             CreateBond();
             chargeBond = false; 
