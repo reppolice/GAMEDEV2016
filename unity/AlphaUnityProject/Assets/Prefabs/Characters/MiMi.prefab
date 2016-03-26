@@ -332,6 +332,7 @@ MonoBehaviour:
   movingTurnSpeed: 10
   stationaryTurnSpeed: 180
   debugMode: 1
+  enemies: []
 --- !u!135 &13509090
 SphereCollider:
   m_ObjectHideFlags: 1
