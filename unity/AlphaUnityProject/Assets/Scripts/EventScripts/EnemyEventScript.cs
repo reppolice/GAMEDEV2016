@@ -5,7 +5,8 @@ public class EnemyEventScript : MonoBehaviour {
     //TODO: Refactor to list, for better insertion and removal
     GameObject[] enemies;
     GameObject player;
-    bool chasing; 
+    [HideInInspector]
+    public bool chasing; 
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class EnemyEventScript : MonoBehaviour {
             Debug.Log("Editing gameObject navmesh: " + enemies[i].name);
             if (enemies[i].GetComponent<NavMeshAgent>() && player)
             {
-                enemies[i].GetComponent<EnemyNavmeshScript>().MoveToTarget(player.transform.position);
+                enemies[i].GetComponent<EnemyNavmeshScript>().SetTarget(player); 
             }
         }
     }
