@@ -11,8 +11,7 @@ public class PlatformPuzzleEvent : MonoBehaviour {
 	  
 	void Start()
 	{
-        GameObject controller = GameObject.FindGameObjectWithTag("PuzzleDoor1");
-        audioSources = controller.GetComponents<AudioSource>();
+        audioSources = storyWall.GetComponents<AudioSource>();
 		switchScript1 = switch1.GetComponent<HexagonSwitchScript>();
 		switchScript2 = switch2.GetComponent<HexagonSwitchScript>();
 	}
