@@ -23,7 +23,7 @@ public class HexagonSwitchScript : MonoBehaviour {
                 player.GetComponent<PlayerController>().playerStatus.setChannelStatus(true);
             } else
             {
-                Debug.Log("Bond status: " + player.GetComponent<PlayerController>().playerStatus.getBondStatus());
+                //Debug.Log("Bond status: " + player.GetComponent<PlayerController>().playerStatus.getBondStatus());
             }
 
             if (Input.GetButtonDown("Channelling") && canChanel)

@@ -13,6 +13,8 @@ TagManager:
   - PlayerTwo
   - GUIB4Status
   - GUIMiMiStatus
+  - Enemy
+  - PuzzleDoor1
   layers:
   - Default
   - TransparentFX
