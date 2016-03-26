@@ -25,7 +25,7 @@ public class HexagonSwitchScript : MonoBehaviour {
                 Debug.Log("Bond status: " + player.GetComponent<PlayerController>().playerStatus.getBondStatus());
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && canChanel)
+            if (Input.GetButtonDown("Channelling") && canChanel)
             {
                 startTime = Time.time;
                 channeling = true;
@@ -33,7 +33,7 @@ public class HexagonSwitchScript : MonoBehaviour {
                 
             }
 
-            if (Input.GetKeyUp(KeyCode.F))
+            if (Input.GetButtonUp("Channelling"))
             {
                 Debug.Log("End of channelling");
                 channeling = false;

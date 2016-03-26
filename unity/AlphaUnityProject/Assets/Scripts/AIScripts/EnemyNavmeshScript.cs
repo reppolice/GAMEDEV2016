@@ -4,15 +4,26 @@ using System.Collections;
 public class EnemyNavmeshScript : MonoBehaviour {
 
     //TODO: Find optimal speed
-    public float speed = 10.0f; 
+    public float speed = 10.0f;
+    public float recoveringTime = 3.0f; 
 
     private NavMeshAgent agent;
+    private GameObject target; 
     private GameObject destination; 
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
+    }
+    void Update()
+    {
+        if (target)
+            MoveToTarget(target.transform.position);
+    }
+    public void SetTarget(GameObject chaseTarget)
+    {
+        target = chaseTarget; 
     }
 
     public void MoveToTarget(Vector3 destination)
@@ -31,7 +42,7 @@ public class EnemyNavmeshScript : MonoBehaviour {
 
     void AttachStickySphere(GameObject target)
     {
-        // Adjust sphere behavioural components
+        // Adjust sphere and event behavioural components
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<SphereCollider>().enabled = false; 
         
@@ -49,5 +60,15 @@ public class EnemyNavmeshScript : MonoBehaviour {
         target.GetComponent<PlayerController>().enemies.Add(gameObject); 
 
         // Adjust ambient light  
+    }
+
+    // Note: Triggered from PlayerController
+    public IEnumerator DetachFromPlayer()
+    {
+        yield return new WaitForSeconds(recoveringTime);
+        Debug.Log(gameObject.name + " is waiting for assignment.");
+
+        GetComponent<NavMeshAgent>().enabled = true;
+        GetComponent<SphereCollider>().enabled = true;
     }
 }

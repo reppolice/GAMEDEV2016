@@ -101,8 +101,10 @@ public class PlayerController : MonoBehaviour {
         {
             Debug.Log("Detaching enemy: " + enemy);
             enemy.transform.parent = null;
-            speed += 2.0f; 
+            speed += 2.0f;
             //enemy.GetComponent<NavMeshAgent>().destination = Vector3.zero;
+            StartCoroutine(enemy.GetComponent<EnemyNavmeshScript>().DetachFromPlayer());
+           
         }
     }
 
